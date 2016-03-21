@@ -33,7 +33,7 @@ var router = function (nav) {
                 res.statusCode = 500;
                 res.send(err);
             }
-            console.log(domain);
+            //console.log(domain);
             res.render('vizualize',
                         {
                             title: 'Charts',
