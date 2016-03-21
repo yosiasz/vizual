@@ -35,14 +35,11 @@ var router = function (nav) {
     
     adminRouter.route('/')
         .get(function (req, res) {
-            mongodb.connect(url, function (err, db) {
-                var collection = db.collection('books');
-                collection.find({}).toArray(function (err, results) {
-                    res.send(results);
-                    db.close();
-                });
-                
-            });
+                res.render('index',
+                            {
+                title: 'Books',
+                nav: nav
+                });                    
     });
     
     adminRouter.route('/addBooks')

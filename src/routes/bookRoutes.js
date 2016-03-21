@@ -2,12 +2,11 @@ var express = require('express');
 var bookRouter = express.Router();
 var mongodb = require('mongodb').MongoClient;
 var objectId = require('mongodb').ObjectID;
-
+var url = 'mongodb://vizual:vizual@ds015899.mlab.com:15899/vizual';
 
 var router = function (nav) {        
     bookRouter.route('/')
         .get(function (req, res) {
-                    var url = 'mongodb://localhost:27017/vizual';
             mongodb.connect(url, function (err, db) {
                 var collection = db.collection('books');
                 collection.find({}).toArray(function (err, results) {
@@ -29,7 +28,6 @@ var router = function (nav) {
         .get(function (req, res) {
             var id = new objectId(req.params.id);
             
-            var url = 'mongodb://localhost:27017/vizual';
             mongodb.connect(url, function (err, db) {
                 var collection = db.collection('books');
                 collection.findOne({_id: id}, function (err, results) {
